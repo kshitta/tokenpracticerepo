@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="practiceFlow" doc:id="db4482fb-7f9c-4f47-b5fb-4ed44d727fad" >
+		<ee:transform doc:name="Transform Message" doc:id="5452458e-f0e1-4bd6-b8ae-a7a36a3f3f60" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/dw
+import dw::core::Strings
+
+//fun formatData(myinput:String , formatter: (String)->String) =formatter(myinput)
+
+fun chain(myinput, myfunction) =
+ myfunction(myinput)
+---
+
+//formatData("Siva Prasad",Strings::dasherize)
+chain(
+chain( {one:"One", two:"Two"}, (x) -> (x.one ++ ' ' ++ x.two) ),
+upper
+)]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
