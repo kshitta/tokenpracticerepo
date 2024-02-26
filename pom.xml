@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>01-dw-basics-start</artifactId>
+	<artifactId>01-mule-basics-start</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>01-dw-basics-start</name>
+	<name>01-mule-basics-start</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,11 +25,30 @@
 				<version>3.2.0</version>
 			</plugin>
 			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-			</plugin>
+	<groupId>org.mule.tools.maven</groupId>
+	<artifactId>mule-maven-plugin</artifactId>
+	<version>4.0.0</version>
+	<extensions>true</extensions>
+	<configuration>
+		<cloudHubDeployment>
+			<uri>https://anypoint.mulesoft.com</uri>
+			<muleVersion>${app.runtime}</muleVersion>
+			<!-- <username>${username}</username>
+			<password>${password}</password> -->
+			<connectedAppClientId>adf193b3b8c94dd4b00f3dbc3d9a0af4</connectedAppClientId>
+			<connectedAppClientSecret>5D2e47f6fAe845f3B5c89a7Cf83395BE</connectedAppClientSecret>
+			<connectedAppGrantType>client_credentials</connectedAppGrantType>
+			<applicationName>basics-deloitte</applicationName>
+			<environment>Sandbox</environment>
+			<region>us-east-1</region>
+			<workers>1</workers>
+			<workerType>MICRO</workerType>  
+			<properties>
+				<http.port>8081</http.port>
+			</properties>
+		</cloudHubDeployment>
+	</configuration>
+</plugin>
 		</plugins>
 	</build>
 
